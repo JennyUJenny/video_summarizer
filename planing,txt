@@ -1,0 +1,4 @@
+- Preprocessing: Video -> Audio -> Text
+- Model: Takes a model as input and returns the summury
+- Summurizer: Main class
+- Tests files...
