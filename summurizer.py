@@ -1,8 +1,8 @@
 import whisper
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import torch
-from video_summarizer.model_t5 import generate_summary
-from video_summarizer.preprocessing import preprocess_video
+from model_t5 import generate_summary
+from preprocessing import preprocess_video
 
 class VideoSummarizer:
     def __init__(self, model_name):
