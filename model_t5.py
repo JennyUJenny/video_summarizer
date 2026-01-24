@@ -1,14 +1,14 @@
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import torch
 
-def generate_summary(text: str, model_name: str, max_new_tokens: int) -> None:
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
+def generate_summary(text, model, tokenizer, max_new_tokens) -> str:
+    # tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    dtype = torch.float16 if device == "cuda" else torch.float32
+    # device = "cuda" if torch.cuda.is_available() else "cpu"
+    # dtype = torch.float16 if device == "cuda" else torch.float32
 
-    model = AutoModelForSeq2SeqLM.from_pretrained(model_name, torch_dtype=dtype).to(device)
-    model.eval()
+    # model = AutoModelForSeq2SeqLM.from_pretrained(model_name, torch_dtype=dtype).to(device)
+    # model.eval()
 
     inputs = tokenizer(f"summarize: {text}", return_tensors="pt", truncation=True, max_length=1024, padding=True).to(device)
 
@@ -23,10 +23,8 @@ def generate_summary(text: str, model_name: str, max_new_tokens: int) -> None:
         min_new_tokens=20     # prevents ultra-short outputs
     )
 
-    print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+    return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-
-generate_summary("On a slow morning that felt longer than it should have, Mira woke up late, stared at the ceiling, and thought about nothing useful. She made coffee, added too much milk, changed her mind, and drank it anyway while scrolling past articles she didn’t read. On the way outside, she forgot why she had left, remembered, then doubted it again. At work, meetings stretched without conclusions, and explanations repeated themselves. By evening, she felt tired but oddly satisfied, convinced the day mattered even though she couldn’t explain why.", "t5-small", 100)
 # from transformers import T5Tokenizer, T5ForConditionalGeneration
 
 # model_name = 't5-small'

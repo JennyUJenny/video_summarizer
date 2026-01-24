@@ -9,9 +9,9 @@ def extract_audio(video_path, output_path="output.wav"):
     ]
     subprocess.run(command, check=True)
 
-def preprocess_video(video_path):
-    # load the whisper model
-    model = whisper.load_model("turbo")
+def preprocess_video(video_path, model):
+    # # load the whisper model
+    # model = whisper.load_model("turbo")
     
     #extract audio
     extract_audio(video_path)  
@@ -30,5 +30,5 @@ def preprocess_video(video_path):
     result = model.transcribe("output.wav", language=detected_language)
 
     # store the recognized text
-    input_text = result["text"]
+    return result["text"]
 
