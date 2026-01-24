@@ -4,6 +4,7 @@ import subprocess
 def extract_audio(video_path, output_path="output.wav"):
     command = [
         "ffmpeg",
+        "-y", # Add -y flag to overwrite output file without asking
         "-i", video_path,
         output_path
     ]
