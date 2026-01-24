@@ -1,4 +1,5 @@
 import whisper
+import subprocess
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import torch
 from model_t5 import generate_summary
