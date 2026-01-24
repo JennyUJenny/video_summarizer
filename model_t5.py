@@ -1,7 +1,7 @@
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import torch
 
-def generate_summary(text, model, tokenizer, max_new_tokens) -> str:
+def generate_summary(text, model, tokenizer, device, max_new_tokens) -> str:
     # tokenizer = AutoTokenizer.from_pretrained(model_name)
 
     # device = "cuda" if torch.cuda.is_available() else "cpu"
