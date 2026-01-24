@@ -10,7 +10,7 @@ def extract_audio(video_path, output_path="output.wav"):
     subprocess.run(command, check=True)
 
 def preprocess_video(video_path):
-    # Install whisper 
+    # load the whisper model
     model = whisper.load_model("turbo")
     
     #extract audio
